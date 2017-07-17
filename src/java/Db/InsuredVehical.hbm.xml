@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.InsuredVehical" table="insured_vehical" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="insuredVehicalId" type="string">
+            <column name="insured_vehical_id" length="8" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="insuranceCompany" class="Db.InsuranceCompany" fetch="select">
+            <column name="insurance_company_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="insuranceCoverage" class="Db.InsuranceCoverage" fetch="select">
+            <column name="insurance_coverage_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehicalColor" class="Db.VehicalColor" fetch="select">
+            <column name="vehical_color_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehicalModel" class="Db.VehicalModel" fetch="select">
+            <column name="vehical_model_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehicalOwner" class="Db.VehicalOwner" fetch="select">
+            <column name="vehical_owner_nic" length="10" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehicalStatus" class="Db.VehicalStatus" fetch="select">
+            <column name="vehical_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vehicalType" class="Db.VehicalType" fetch="select">
+            <column name="vehical_type_id" not-null="true" />
+        </many-to-one>
+        <property name="yearOfMade" type="java.lang.Integer">
+            <column name="year_of_made" />
+        </property>
+        <property name="enginNo" type="string">
+            <column name="engin_no" length="150" />
+        </property>
+        <property name="chasisNo" type="string">
+            <column name="chasis_no" length="150" />
+        </property>
+        <set name="insuranceClaims" table="insurance_claim" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="insured_vehical_id" length="8" not-null="true" />
+            </key>
+            <one-to-many class="Db.InsuranceClaim" />
+        </set>
+        <set name="vehicalImages" table="vehical_image" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="insured_vehical_id" length="8" not-null="true" />
+            </key>
+            <one-to-many class="Db.VehicalImage" />
+        </set>
+    </class>
+</hibernate-mapping>

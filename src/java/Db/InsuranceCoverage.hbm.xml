@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.InsuranceCoverage" table="insurance_coverage" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="insuranceCoverageId" type="java.lang.Integer">
+            <column name="insurance_coverage_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="insuranceType" class="Db.InsuranceType" fetch="select">
+            <column name="insurance_type_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="insuredPeriod" class="Db.InsuredPeriod" fetch="select">
+            <column name="insured_period_id" not-null="true" />
+        </many-to-one>
+        <property name="coverageAmount" type="java.lang.Double">
+            <column name="coverage_amount" precision="22" scale="0" />
+        </property>
+        <property name="insuredDate" type="timestamp">
+            <column name="insured_date" length="19" />
+        </property>
+        <property name="expireDate" type="timestamp">
+            <column name="expire_date" length="19" />
+        </property>
+        <set name="insuredVehicals" table="insured_vehical" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="insurance_coverage_id" not-null="true" />
+            </key>
+            <one-to-many class="Db.InsuredVehical" />
+        </set>
+    </class>
+</hibernate-mapping>

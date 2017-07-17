@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.InsuranceClaim" table="insurance_claim" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="insuranceClaimId" type="java.lang.Integer">
+            <column name="insurance_claim_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="claimLocation" class="Db.ClaimLocation" fetch="select">
+            <column name="claim_location_id" />
+        </many-to-one>
+        <many-to-one name="claimStatus" class="Db.ClaimStatus" fetch="select">
+            <column name="claim_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="damageType" class="Db.DamageType" fetch="select">
+            <column name="damage_type_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="insuranceAgent" class="Db.InsuranceAgent" fetch="select">
+            <column name="agent_nic" length="10" />
+        </many-to-one>
+        <many-to-one name="insuredVehical" class="Db.InsuredVehical" fetch="select">
+            <column name="insured_vehical_id" length="8" not-null="true" />
+        </many-to-one>
+        <property name="claimDescription" type="string">
+            <column name="claim_description" length="65535" />
+        </property>
+        <property name="claimDatetime" type="timestamp">
+            <column name="claim_datetime" length="19" />
+        </property>
+        <set name="evidencePhotos" table="evidence_photo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="insurance_claim_id" not-null="true" />
+            </key>
+            <one-to-many class="Db.EvidencePhoto" />
+        </set>
+        <set name="respondMessages" table="respond_message" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="insurance_claim_id" not-null="true" />
+            </key>
+            <one-to-many class="Db.RespondMessage" />
+        </set>
+    </class>
+</hibernate-mapping>

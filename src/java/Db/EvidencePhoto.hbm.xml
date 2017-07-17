@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.EvidencePhoto" table="evidence_photo" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="evidenceImageId" type="java.lang.Integer">
+            <column name="evidence_image_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="evidencePhotoType" class="Db.EvidencePhotoType" fetch="select">
+            <column name="evidence_photo_type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="insuranceClaim" class="Db.InsuranceClaim" fetch="select">
+            <column name="insurance_claim_id" not-null="true" />
+        </many-to-one>
+        <property name="evidenceImageUrl" type="string">
+            <column name="evidence_image_url" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

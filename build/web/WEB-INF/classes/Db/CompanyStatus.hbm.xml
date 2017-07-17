@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.CompanyStatus" table="company_status" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="companyStatusId" type="java.lang.Integer">
+            <column name="company_status_id" />
+            <generator class="identity" />
+        </id>
+        <property name="companyStatus" type="string">
+            <column name="company_status" length="45" />
+        </property>
+        <set name="insuranceCompanies" table="insurance_company" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="company_status_id" not-null="true" />
+            </key>
+            <one-to-many class="Db.InsuranceCompany" />
+        </set>
+    </class>
+</hibernate-mapping>

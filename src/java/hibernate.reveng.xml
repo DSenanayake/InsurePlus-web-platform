@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="insure_plus_2"/>
+  <table-filter match-name="insurance_claim"/>
+  <table-filter match-name="evidence_photo_type"/>
+  <table-filter match-name="agent_contact_no"/>
+  <table-filter match-name="damage_type"/>
+  <table-filter match-name="reply_for_respond"/>
+  <table-filter match-name="vehical_model"/>
+  <table-filter match-name="agent_status"/>
+  <table-filter match-name="company_status"/>
+  <table-filter match-name="vehical_owner"/>
+  <table-filter match-name="insured_vehical"/>
+  <table-filter match-name="city"/>
+  <table-filter match-name="insurance_company"/>
+  <table-filter match-name="vehical_image"/>
+  <table-filter match-name="vehical_brand"/>
+  <table-filter match-name="company_logo"/>
+  <table-filter match-name="insured_period"/>
+  <table-filter match-name="insurance_coverage"/>
+  <table-filter match-name="insurance_type"/>
+  <table-filter match-name="agent_location"/>
+  <table-filter match-name="owner_status"/>
+  <table-filter match-name="vehical_color"/>
+  <table-filter match-name="evidence_photo"/>
+  <table-filter match-name="vehical_type"/>
+  <table-filter match-name="claim_location"/>
+  <table-filter match-name="vehical_status"/>
+  <table-filter match-name="claim_status"/>
+  <table-filter match-name="respond_message"/>
+  <table-filter match-name="insurance_agent"/>
+  <table-filter match-name="insured_period_type"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/insure_plus_2?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping resource="Db/InsuranceAgent.hbm.xml"/>
+    <mapping resource="Db/VehicalColor.hbm.xml"/>
+    <mapping resource="Db/AgentStatus.hbm.xml"/>
+    <mapping resource="Db/InsuredPeriod.hbm.xml"/>
+    <mapping resource="Db/InsuredPeriodType.hbm.xml"/>
+    <mapping resource="Db/AgentLocation.hbm.xml"/>
+    <mapping resource="Db/CompanyStatus.hbm.xml"/>
+    <mapping resource="Db/CompanyLogo.hbm.xml"/>
+    <mapping resource="Db/VehicalBrand.hbm.xml"/>
+    <mapping resource="Db/ClaimLocation.hbm.xml"/>
+    <mapping resource="Db/EvidencePhoto.hbm.xml"/>
+    <mapping resource="Db/RespondMessage.hbm.xml"/>
+    <mapping resource="Db/InsuranceCompany.hbm.xml"/>
+    <mapping resource="Db/DamageType.hbm.xml"/>
+    <mapping resource="Db/VehicalOwner.hbm.xml"/>
+    <mapping resource="Db/AgentContactNo.hbm.xml"/>
+    <mapping resource="Db/VehicalModel.hbm.xml"/>
+    <mapping resource="Db/VehicalType.hbm.xml"/>
+    <mapping resource="Db/ReplyForRespond.hbm.xml"/>
+    <mapping resource="Db/VehicalImage.hbm.xml"/>
+    <mapping resource="Db/InsuranceType.hbm.xml"/>
+    <mapping resource="Db/EvidencePhotoType.hbm.xml"/>
+    <mapping resource="Db/InsuranceCoverage.hbm.xml"/>
+    <mapping resource="Db/City.hbm.xml"/>
+    <mapping resource="Db/OwnerStatus.hbm.xml"/>
+    <mapping resource="Db/ClaimStatus.hbm.xml"/>
+    <mapping resource="Db/VehicalStatus.hbm.xml"/>
+    <mapping resource="Db/InsuredVehical.hbm.xml"/>
+    <mapping resource="Db/InsuranceClaim.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

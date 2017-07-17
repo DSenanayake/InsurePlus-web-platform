@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.ClaimLocation" table="claim_location" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="claimLocationId" type="java.lang.Integer">
+            <column name="claim_location_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="city" class="Db.City" fetch="select">
+            <column name="city_id" not-null="true" />
+        </many-to-one>
+        <property name="logitude" type="java.lang.Double">
+            <column name="logitude" precision="22" scale="0" />
+        </property>
+        <property name="latitude" type="java.lang.Double">
+            <column name="latitude" precision="22" scale="0" />
+        </property>
+        <set name="insuranceClaims" table="insurance_claim" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="claim_location_id" />
+            </key>
+            <one-to-many class="Db.InsuranceClaim" />
+        </set>
+    </class>
+</hibernate-mapping>

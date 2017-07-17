@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.InsuranceAgent" table="insurance_agent" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="agentNic" type="string">
+            <column name="agent_nic" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="agentStatus" class="Db.AgentStatus" fetch="select">
+            <column name="agent_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="insuranceCompany" class="Db.InsuranceCompany" fetch="select">
+            <column name="insurance_company_id" not-null="true" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" />
+        </property>
+        <property name="dob" type="date">
+            <column name="dob" length="10" />
+        </property>
+        <property name="profileImgUrl" type="string">
+            <column name="profile_img_url" length="65535" />
+        </property>
+        <set name="insuranceClaims" table="insurance_claim" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="agent_nic" length="10" />
+            </key>
+            <one-to-many class="Db.InsuranceClaim" />
+        </set>
+        <set name="agentLocations" table="agent_location" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="agent_nic" length="10" not-null="true" />
+            </key>
+            <one-to-many class="Db.AgentLocation" />
+        </set>
+        <set name="agentContactNos" table="agent_contact_no" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="insurance_agent_nic" length="10" not-null="true" />
+            </key>
+            <one-to-many class="Db.AgentContactNo" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 15, 2017 2:10:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Db.InsuredPeriod" table="insured_period" catalog="insure_plus_2" optimistic-lock="version">
+        <id name="insuredPeriodId" type="java.lang.Integer">
+            <column name="insured_period_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="insuredPeriodType" class="Db.InsuredPeriodType" fetch="select">
+            <column name="insured_period_type_id" not-null="true" />
+        </many-to-one>
+        <property name="insuredPeriod" type="java.lang.Double">
+            <column name="insured_period" precision="22" scale="0" />
+        </property>
+        <set name="insuranceCoverages" table="insurance_coverage" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="insured_period_id" not-null="true" />
+            </key>
+            <one-to-many class="Db.InsuranceCoverage" />
+        </set>
+    </class>
+</hibernate-mapping>
